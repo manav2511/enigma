@@ -61,5 +61,5 @@ char Cipher::decode(char c)
 /* Rotate the key */
 void Cipher::rotate()
 {
-    this->key = key;
+    std::rotate(key.begin(), key.begin()+1, key.end());
 }

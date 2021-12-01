@@ -27,14 +27,15 @@ char Cipher::encode(char c)
     {
         char r;
         if (isupper(c))
-            r = toupper(key[tolower(c) - 'a']);
+            r = toupper(key[alphabet.find_first_of(tolower(c))]);
         else
-            r = key[c - 'a'];
+            r = key[alphabet.find_first_of(c)];
         rotate();
         return r;
     }
     else
     {
+        rotate();
         return c;
     }
 }
@@ -54,6 +55,7 @@ char Cipher::decode(char c)
     }
     else
     {
+        rotate();
         return c;
     }
 }
